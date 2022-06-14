@@ -17,10 +17,11 @@
       </ion-card-title>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngFor="let registro of registrosI">
+  <ion-card *ngFor="let registro of registros">
     <ion-card-content>
       <ion-icon name="arrow-down-circle-outline" slot="start"></ion-icon>
-      Ha ingresado {{registro}}
+      <ion-text *ngIf="registro.tipo == 'Agregar'"> Se ha agregado {{registro.cantidad}}</ion-text>
+      <ion-text *ngIf="registro.tipo == 'Eliminar'"> Se ha eliminado {{registro.cantidad}}</ion-text>
     </ion-card-content>
   </ion-card>
 

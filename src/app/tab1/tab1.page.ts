@@ -10,7 +10,6 @@ import { Transaction } from '../models/transaction.model';
 })
 export class Tab1Page implements OnInit{
   registros = [];
-  registrosI = [];
   opciones = ['Agregar', 'Eliminar'];
   elegido: string;
   saldo = 0;
@@ -28,21 +27,20 @@ export class Tab1Page implements OnInit{
   ngOnInit(): void {
 
   } 
-  invertirArreglo(){
-    
-    for(let i= 0; i<this.registros.length; i++){
-      this.registrosI[i] = this.registros[this.registros.length - 1 -i];
-      this.saldo = this.saldo + this.registros[i]
+  invertirArreglo(array: any){
+    console.log(array.length);
+    let arregloI = [];
+    for(let i = 0; i<array.length; i++){
+      arregloI[i] = array[array.length -1 -i];
     }
-    console.log('->'+this.registrosI);
+    return arregloI;
   }
 
   getDatos(){
     const id = this.identificador;
     this.firestore.getSubcollection<Transaction>(this.path, id, this.sub).subscribe(res => {
-      this.registros = res.map(valor => valor.cantidad);
-      console.log('Hola '+this.registros);
-      this.invertirArreglo();
+      this.registros = this.invertirArreglo(res);
+      console.log(this.registros);
     });
     
   }
