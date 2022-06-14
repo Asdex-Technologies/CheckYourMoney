@@ -19,7 +19,8 @@
   </ion-card>
   <ion-card *ngFor="let registro of registros">
     <ion-card-content>
-      <ion-icon name="arrow-down-circle-outline" slot="start"></ion-icon>
+      <ion-icon *ngIf="registro.tipo == 'Agregar'" name="arrow-down-circle-outline" slot="start"></ion-icon>
+      <ion-icon *ngIf="registro.tipo == 'Eliminar'" name="arrow-up-circle-outline" slot="start"></ion-icon>
       <ion-text *ngIf="registro.tipo == 'Agregar'"> Se ha agregado {{registro.cantidad}}</ion-text>
       <ion-text *ngIf="registro.tipo == 'Eliminar'"> Se ha eliminado {{registro.cantidad}}</ion-text>
     </ion-card-content>
