@@ -1,0 +1,7 @@
+{
+  "name": "CheckYourMoney",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

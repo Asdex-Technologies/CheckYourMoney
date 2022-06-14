@@ -1,0 +1,27 @@
+<ion-header class="ion-text-center" [translucent]="true" >
+  <ion-toolbar>
+    <ion-title>
+      Dinero
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content class="ion-text-center">
+      <ion-card-subtitle>
+        Tu saldo disponible
+      </ion-card-subtitle>
+      <ion-card-title>
+        Saldo actual: ${{saldo}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let registro of registrosI">
+    <ion-card-content>
+      <ion-icon name="arrow-down-circle-outline" slot="start"></ion-icon>
+      Ha ingresado {{registro}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

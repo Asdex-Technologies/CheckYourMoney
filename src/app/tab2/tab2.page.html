@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Graficas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+<p *ngFor="let transaccion of transacciones">{{transaccion.cantidad}}</p>
+  <ion-card>
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </ion-card>
+  <ion-card>
+    <ion-card-content class="ionCard">
+      <ion-input type="number" [(ngModel)]="transaccion.cantidad"  placeholder="Escribe la cifra" style="width: 150px;"></ion-input>
+
+      <ion-button class="mover"> 
+        <ion-select [(ngModel)]="transaccion.tipo">
+          <ion-select-option *ngFor="let opcion of opciones">{{opcion}}</ion-select-option>
+        </ion-select>
+      </ion-button>
+      <ion-button style="position: absolute; left:10px; top: 75px; --border-radius: 50px; --background: #d9d9d9;
+      --color: #222428;" (click)="agregar()">
+        Guardar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

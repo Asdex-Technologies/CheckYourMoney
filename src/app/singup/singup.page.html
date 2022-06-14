@@ -1,0 +1,30 @@
+<ion-content style="--background: #b7b7b7;">
+  <div class="caja">
+    <ion-img [src]="img" class="imagen"></ion-img>
+  </div>
+<div class="pintura2">
+  <h1 class="ion-text-center" style="position: relative; top: 10px;">Registrar</h1>
+  <ion-item style="--ion-item-background: #000000; position: relative;">
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="newUser.nombre" placeholder="Escribe tu nombre"></ion-input>
+  </ion-item>
+  <ion-item style="--ion-item-background: #000000; position: relative;">
+    <ion-label position="floating">Correo</ion-label>
+    <ion-input type="text" [(ngModel)]="newUser.email" placeholder="Escribe tu correo"></ion-input>
+  </ion-item>
+  <ion-item style="--ion-item-background: #000000; position: relative;">
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="newUser.password" placeholder="Escribe tu contraseña"></ion-input>
+  </ion-item>
+  <ion-item style="--ion-item-background: #000000; position: relative;">
+    <ion-label position="floating">Vuelve a escribir tu contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="password2" placeholder="Escribe tu contraseña"></ion-input>
+  </ion-item>
+  <ion-button style="position: relative; top: 25px; left: 15px; --background: #525252; --border-radius: 30px;" (click)="registro()">
+    Registrar
+  </ion-button>
+  <a href="login" style="--ion-color-primary: #ffffff;">
+    <p style="position: relative; left:175px; top:-20px">Entrar</p>
+  </a>
+</div>
+</ion-content>

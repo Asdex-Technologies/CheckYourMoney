@@ -1,0 +1,24 @@
+
+<ion-content style="--background: #b7b7b7;">
+  <div class="caja">
+    <ion-img [src]="img" class="imagen"></ion-img>
+  </div>
+    
+<div class="pintura2">
+  <h1 class="ion-text-center" style="position: relative; top: 20px;">Entrar</h1>
+  <ion-item style="--ion-item-background: #000000; position: relative; top:8px;  ">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.email" placeholder="Escribe email"></ion-input>
+  </ion-item>
+  <ion-item style="--ion-item-background: #000000; position: relative; top:5px;  ">
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="usuario.password" placeholder="Escribe tu contraseña"></ion-input>
+  </ion-item>
+  <ion-button style="position: relative; top: 25px; left: 15px; --background: #525252; --border-radius: 30px;" (click)="sesion()">
+    Entrar
+  </ion-button>
+  <a href="singup" style="--ion-color-primary: #ffffff;">
+    <p style="position: relative; left:175px; top:-20px">Crea tu cuenta</p>
+  </a>
+</div>
+</ion-content>

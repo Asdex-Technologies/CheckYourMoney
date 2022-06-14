@@ -1,0 +1,24 @@
+.caja{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    top: 1px;
+}
+.imagen{
+    height: 250px;
+    width: 250px;
+    filter: drop-shadow(0px 100px 80px rgba(0, 0, 0, 0.07))
+    drop-shadow(0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0531481)) 
+    drop-shadow(0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0425185)) 
+    drop-shadow(0px 20px 13px rgba(0, 0, 0, 0.035)) 
+    drop-shadow(0px 8.14815px 6.51852px rgba(0, 0, 0, 0.0274815)) 
+    drop-shadow(0px 1.85185px 3.14815px rgba(0, 0, 0, 0.0168519));
+}
+.pintura2{
+    position: absolute;
+    background-color: black;
+    height: 420px;
+    width: 100%;
+    border-radius: 60px 0px 60px 0px;
+}
