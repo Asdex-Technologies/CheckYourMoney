@@ -7,12 +7,12 @@
 <div class="pintura2">
   <h1 class="ion-text-center" style="position: relative; top: 20px; color: white;">Entrar</h1>
   <ion-item style="--ion-item-background: #000000; position: relative; top:8px;  ">
-    <ion-label position="floating" style="color: white;">Email</ion-label>
-    <ion-input style="--placeholder-color: white; --color:white;" type="text" [(ngModel)]="usuario.email" placeholder="Escribe email"></ion-input>
+    <ion-label position="floating" class="blanco">Email</ion-label>
+    <ion-input class="hoder" type="text" [(ngModel)]="usuario.email" placeholder="Escribe email"></ion-input>
   </ion-item>
   <ion-item style="--ion-item-background: #000000; position: relative; top:5px;">
-    <ion-label position="floating" style="color: white;">Contraseña</ion-label>
-    <ion-input style="--placeholder-color: white; --color:white;" type="password" [(ngModel)]="usuario.password" placeholder="Escribe tu contraseña"></ion-input>
+    <ion-label position="floating" class="blanco">Contraseña</ion-label>
+    <ion-input class="hoder" type="password" [(ngModel)]="usuario.password" placeholder="Escribe tu contraseña"></ion-input>
   </ion-item>
   <ion-button style="position: relative; top: 25px; left: 15px; --background: #525252; --border-radius: 30px;" (click)="sesion()">
     Entrar
