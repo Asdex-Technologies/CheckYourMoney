@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { Observable, of } from 'rxjs';
 import { Transaction } from '../models/transaction.model';
 import { AuthService } from '../services/auth.service';
 import { FirebaseService } from '../services/firebase.service';
@@ -21,10 +20,17 @@ export class Tab2Page implements OnInit {
   transacciones: Transaction[] = [];
   cantidades = [];
   nombres = [];
+
   transaccion: Transaction = {
     cantidad: null,
     tipo: null
   }
+  total: Transaction = {
+    cantidad: null,
+    tipo: null
+  }
+  totales: Transaction[] = [];
+
   constructor(private firestore: FirebaseService, private authSvc: AuthService){
     
     this.authSvc.stateUser().subscribe(async res =>{
@@ -41,8 +47,25 @@ export class Tab2Page implements OnInit {
   }
 
 
-  async agregar(){
-    if(this.transaccion.tipo == undefined && this.transaccion.cantidad == null){
+  agregar(){
+    this.enviarTransacciones();
+    this.enviarTotales();
+  }
+
+  getsubcollection(){
+    const id = this.identificador;
+    const sub = 'Totales'
+    this.firestore.getSubcollection<Transaction>(this.path, id, sub).subscribe(res => {
+      this.cantidades = res.map(valor => valor.cantidad);
+      this.nombres = res.map(valor => valor.tipo);
+      this.i = res.length;
+      console.log('Tamaño arreglo ->' + this.i);
+      this.generarGrafico();
+    });
+  }
+
+  async enviarTransacciones(){
+    if(this.transaccion.tipo == null || this.transaccion.cantidad == null){
       console.log('Error');
     }else{
       console.log(this.transaccion);
@@ -55,15 +78,23 @@ export class Tab2Page implements OnInit {
     }
   }
 
-  getsubcollection(){
-    const id = this.identificador;
-    this.firestore.getSubcollection<Transaction>(this.path, id, this.sub).subscribe(res => {
-      this.cantidades = res.map(valor => valor.cantidad);
-      this.nombres = res.map(valor => valor.tipo);
-      this.i = res.length;
-      console.log('Tamaño arreglo ->' + this.i);
-      this.generarGrafico();
-    });
+  async enviarTotales() {
+    const sub = 'Totales';
+    const id = this.identificador
+    if(this.transaccion.tipo == null || this.transaccion.cantidad == null){
+      console.log('Error');
+    }else{
+      if(this.transaccion.tipo == 'Agregar'){
+        this.saldo = this.saldo + this.transaccion.cantidad;
+        this.total.cantidad = this.saldo;
+      }else{
+        this.saldo = this.saldo - this.transaccion.cantidad;
+        this.total.cantidad = this.saldo
+      }
+      this.total.tipo = this.transaccion.tipo;
+      const newId = String(this.i);
+      await this.firestore.subCollection(this.total,this.path,id,sub,newId);
+    }
   }
 
   generarGrafico(){

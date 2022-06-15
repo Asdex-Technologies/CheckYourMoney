@@ -9,10 +9,12 @@ import { Transaction } from '../models/transaction.model';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
+  total: number;
   registros = [];
+  totales = [];
   opciones = ['Agregar', 'Eliminar'];
   elegido: string;
-  saldo = 0;
+  saldo: number;
   identificador: string;
   path = 'Usuarios';
   sub = 'Transacciones';
@@ -21,6 +23,7 @@ export class Tab1Page implements OnInit{
       if(res){
         this.identificador = res.uid;
          this.getDatos();
+         this.getTotales();
       }
     })
   }
@@ -28,7 +31,7 @@ export class Tab1Page implements OnInit{
 
   } 
   invertirArreglo(array: any){
-    console.log(array.length);
+    this.total = array.length;
     let arregloI = [];
     for(let i = 0; i<array.length; i++){
       arregloI[i] = array[array.length -1 -i];
@@ -42,6 +45,15 @@ export class Tab1Page implements OnInit{
       this.registros = this.invertirArreglo(res);
       console.log(this.registros);
     });
-    
+  }
+  getTotales(){
+    const sub = 'Totales'
+    this.firestore.getSubcollection<Transaction>(this.path, this.identificador, sub).subscribe(res=>{
+      if(this.total == 0){
+        this.saldo = 0;
+      }else{
+        this.saldo = res[this.total - 1].cantidad;
+      }
+    })
   }
 }
