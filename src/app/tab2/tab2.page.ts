@@ -49,7 +49,6 @@ export class Tab2Page implements OnInit {
 
   agregar(){
     this.enviarTransacciones();
-    this.enviarTotales();
   }
 
   getsubcollection(){
@@ -59,7 +58,12 @@ export class Tab2Page implements OnInit {
       this.cantidades = res.map(valor => valor.cantidad);
       this.nombres = res.map(valor => valor.tipo);
       this.i = res.length;
-      console.log('Tamaño arreglo ->' + this.i);
+      if(this.i == 0){
+        this.saldo = 0;
+      }else{
+        this.saldo = res[this.i - 1].cantidad;
+        console.log(this.saldo);
+      }
       this.generarGrafico();
     });
   }
@@ -68,13 +72,18 @@ export class Tab2Page implements OnInit {
     if(this.transaccion.tipo == null || this.transaccion.cantidad == null){
       console.log('Error');
     }else{
-      console.log(this.transaccion);
-      const id = this.identificador;
-      this.i++;
-      const newId = String(this.i);
-      await this.firestore.subCollection(this.transaccion, this.path, id, this.sub, newId);
-      console.log('Hecho');
-      this.generarGrafico();
+      if(this.transaccion.tipo == 'Eliminar' && this.saldo < this.transaccion.cantidad){
+          console.log('No se puede');
+      }else{
+        console.log(this.transaccion);
+        const id = this.identificador;
+        this.i++;
+        const newId = String(this.i);
+        await this.firestore.subCollection(this.transaccion, this.path, id, this.sub, newId);
+        console.log('Hecho');
+        this.enviarTotales();
+        this.generarGrafico();
+      }
     }
   }
 
