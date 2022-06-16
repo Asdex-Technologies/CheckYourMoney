@@ -33,8 +33,11 @@ export class Tab3Page implements OnInit{
     this.firestore.getDoc<UserR>(this.path, this.id).subscribe( res =>{
       if(res){
         this.name = res.nombre;
-        console.log(this.name);
       }
     })
+  }
+
+  goTo(){
+    this.router.navigateByUrl('tabs/tab3/config');
   }
 }
