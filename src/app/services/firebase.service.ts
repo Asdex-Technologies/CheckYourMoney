@@ -44,4 +44,9 @@ export class FirebaseService {
     const collection = this.dbFirestore.collection(path);
     return collection.doc(id).delete();
   }
+
+  deleteColl(path: string, id: string, subPath:string, subId:string){
+    const collection = this.dbFirestore.collection(path).doc(id).collection(subPath);
+    return collection.doc(subId).delete();
+  }
 }

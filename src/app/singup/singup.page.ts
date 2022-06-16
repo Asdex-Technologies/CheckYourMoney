@@ -35,7 +35,6 @@ export class SingupPage implements OnInit {
       console.log('Datos vacios');
     }else{
       if(this.newUser.password == this.password2){
-        console.log('Contraseñas iguales');
         const usuario = await this.authSVC.onRegister(this.newUser).catch( error =>{
           console.log('Error', error);
         })

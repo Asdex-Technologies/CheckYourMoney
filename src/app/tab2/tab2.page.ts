@@ -23,11 +23,13 @@ export class Tab2Page implements OnInit {
 
   transaccion: Transaction = {
     cantidad: null,
-    tipo: null
+    tipo: null,
+    id: null
   }
   total: Transaction = {
     cantidad: null,
-    tipo: null
+    tipo: null,
+    id: null
   }
   totales: Transaction[] = [];
 
@@ -77,10 +79,11 @@ export class Tab2Page implements OnInit {
       }else{
         console.log(this.transaccion);
         const id = this.identificador;
+        
         this.i++;
         const newId = String(this.i);
+        this.transaccion.id = newId;
         await this.firestore.subCollection(this.transaccion, this.path, id, this.sub, newId);
-        console.log('Hecho');
         this.enviarTotales();
         this.generarGrafico();
       }
@@ -89,7 +92,8 @@ export class Tab2Page implements OnInit {
 
   async enviarTotales() {
     const sub = 'Totales';
-    const id = this.identificador
+    const id = this.identificador;
+    
     if(this.transaccion.tipo == null || this.transaccion.cantidad == null){
       console.log('Error');
     }else{
@@ -102,6 +106,7 @@ export class Tab2Page implements OnInit {
       }
       this.total.tipo = this.transaccion.tipo;
       const newId = String(this.i);
+      this.total.id = newId;
       await this.firestore.subCollection(this.total,this.path,id,sub,newId);
     }
   }

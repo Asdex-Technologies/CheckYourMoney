@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgChartsModule,AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFirestoreModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgChartsModule,AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule, AngularFirestoreModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

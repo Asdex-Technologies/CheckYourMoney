@@ -33,7 +33,6 @@ export class LoginPage implements OnInit {
   async sesion(){
     const user = await this.authSvc.onLogin(this.usuario);
     if(user){
-      console.log("sesion iniciada");
       this.router.navigateByUrl('/tabs/tab1');
     }
   }

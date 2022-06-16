@@ -43,7 +43,6 @@ export class Tab1Page implements OnInit{
     const id = this.identificador;
     this.firestore.getSubcollection<Transaction>(this.path, id, this.sub).subscribe(res => {
       this.registros = this.invertirArreglo(res);
-      console.log(this.registros);
     });
   }
   getTotales(){
@@ -55,5 +54,10 @@ export class Tab1Page implements OnInit{
         this.saldo = res[this.total - 1].cantidad;
       }
     })
+  }
+  eliminar(id){
+    this.firestore.deleteColl(this.path,this.identificador,this.sub,id);
+    this.firestore.deleteColl(this.path,this.identificador,'Totales',id);
+    console.log('Hola');
   }
 }
