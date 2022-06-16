@@ -58,6 +58,5 @@ export class Tab1Page implements OnInit{
   eliminar(id){
     this.firestore.deleteColl(this.path,this.identificador,this.sub,id);
     this.firestore.deleteColl(this.path,this.identificador,'Totales',id);
-    console.log('Hola');
   }
 }
