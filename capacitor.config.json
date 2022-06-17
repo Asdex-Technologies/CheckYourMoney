@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "CheckYourMoney",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "cym.asdex.com",
+  "appName": "CheckYourMoney",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }
