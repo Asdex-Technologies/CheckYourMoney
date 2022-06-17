@@ -47,8 +47,6 @@ export class Tab2Page implements OnInit {
   ngOnInit(): void {
     
   }
-
-
   agregar(){
     this.enviarTransacciones();
   }
@@ -140,5 +138,4 @@ export class Tab2Page implements OnInit {
       }
   });
   }
-
 }

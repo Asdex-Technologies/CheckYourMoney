@@ -36,5 +36,4 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/tabs/tab1');
     }
   }
-
 }

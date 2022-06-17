@@ -12,8 +12,6 @@ export class Tab1Page implements OnInit{
   total: number;
   registros = [];
   totales = [];
-  opciones = ['Agregar', 'Eliminar'];
-  elegido: string;
   saldo: number;
   identificador: string;
   path = 'Usuarios';
