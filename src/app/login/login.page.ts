@@ -36,4 +36,7 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/tabs/tab1');
     }
   }
+  goTo(){
+    this.router.navigateByUrl('/singup')
+  }
 }

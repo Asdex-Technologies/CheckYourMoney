@@ -54,4 +54,7 @@ export class SingupPage implements OnInit {
       }
     }
   }
+  goTo(){
+    this.router.navigateByUrl('/login');
+  }
 }
