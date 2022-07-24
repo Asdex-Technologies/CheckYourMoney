@@ -80,7 +80,7 @@ export class Tab2Page implements OnInit {
         
         this.i++;        
         const newId = this.getTime();
-        this.transaccion.id = String(this.i);
+        this.transaccion.id = newId;
         await this.firestore.subCollection(this.transaccion, this.path, id, this.sub, newId);
         this.enviarTotales();
         this.generarGrafico();
