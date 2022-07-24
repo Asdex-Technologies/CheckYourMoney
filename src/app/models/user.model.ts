@@ -8,4 +8,6 @@ export class UserR {
     email: string;
     password: string;
     uid: string;
+    status: 'premium' | 'free';
+    plan:  'mes' | 'forever';
 }

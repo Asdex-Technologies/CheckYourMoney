@@ -17,6 +17,8 @@ export class SingupPage implements OnInit {
     email: '',
     password: '',
     uid: '',
+    status: 'free',
+    plan: 'mes'
   }
   constructor(private router: Router, private firestore: FirebaseService, private authSVC: AuthService, private interaction: InteractionService) { }
 
